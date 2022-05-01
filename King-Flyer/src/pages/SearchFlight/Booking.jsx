@@ -42,7 +42,7 @@ const Booking = ({ credentials, isLoggedIn }) => {
       "-" +
       "0" +
       new Date().getMonth() +
-      "-" +
+      "-" +"0"+
       new Date().getDate(),
     travelDate:
       new Date().getFullYear() +

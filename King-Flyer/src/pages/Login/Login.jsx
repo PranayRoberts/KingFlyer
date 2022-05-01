@@ -121,7 +121,14 @@ function Login({ credentials, setCredentials, setIsLoggedIn }) {
           <hr />
         </div>
 
-        <Button className="register" variant="outlined" size="large">
+        <Button
+          className="register"
+          variant="outlined"
+          size="large"
+          onClick={(e) => {
+            navigate("/register");
+          }}
+        >
           Register
         </Button>
       </div>

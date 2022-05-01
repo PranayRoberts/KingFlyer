@@ -48,9 +48,15 @@ function SideBar({ credentials, setCredentials, isLoggedIn, setIsLoggedIn }) {
             return <MenuItem val={val} key={key} />;
           })}
           {isLoggedIn
-            ? Admin.map((val, key) => {
-                return <MenuItem val={val} key={key} />;
-              })
+            ? credentials.role === "[ADMIN]"
+              ? Admin.map((val, key) => {
+                  return <MenuItem val={val} key={key} />;
+                })
+              : credentials.role === "[USER]"
+              ? User.map((val, key) => {
+                  return <MenuItem val={val} key={key} />;
+                })
+              : ""
             : ""}
         </ul>
 
