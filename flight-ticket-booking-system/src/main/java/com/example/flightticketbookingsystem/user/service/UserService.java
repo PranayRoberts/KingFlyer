@@ -73,7 +73,7 @@ public class UserService implements UserDetailsService {
             if (person.getFirstname().length() > 0) user.get().setFirstname(person.getFirstname());
             if (person.getLastname().length() > 0) user.get().setLastname(person.getLastname());
             if (person.getPassword().length() > 0) {
-                if (!passwordEncoder.matches(person.getPassword(), user.get().getPassword())&&user.get().getPassword().length()<=20)
+                if (!passwordEncoder.matches(person.getPassword(), user.get().getPassword())&&person.getPassword().length()<=20)
                     user.get().setPassword(passwordEncoder.encode(person.getPassword()));
             }
 

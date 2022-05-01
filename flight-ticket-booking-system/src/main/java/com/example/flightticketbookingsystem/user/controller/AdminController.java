@@ -26,6 +26,7 @@ public class AdminController {
     @PostMapping("/register")
     public ResponseEntity<Person> registerNewAdmin(@RequestBody Person person) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/admin/register").toUriString());
+
         return ResponseEntity.created(uri).body(adminService.registerAdmin(person));
     }
 }

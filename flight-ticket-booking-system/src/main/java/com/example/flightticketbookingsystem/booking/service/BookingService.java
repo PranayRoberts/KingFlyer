@@ -18,6 +18,7 @@ public class BookingService {
     BookingRepo bookingRepo;
     FlightRepo flightRepo;
 
+
     @Autowired
     public BookingService(BookingRepo bookingRepo, FlightRepo flightRepo) {
         this.bookingRepo = bookingRepo;
@@ -31,12 +32,16 @@ public class BookingService {
     public Booking addBooking(Booking booking) {
         System.out.println(booking.getBookedFlightId());
         Optional<Flight> flight = flightRepo.findById(booking.getBookedFlightId());
+
         if (booking.getTypeOfSeats().toLowerCase(Locale.ROOT).equals("premium")) {
             flight.get().getStatus().setRemainingPremiumSeats(flight.get().getStatus().getRemainingPremiumSeats() - booking.getNumberOfSeats());
+booking.setTravelCost(booking.getNumberOfSeats()*flight.get().getFare().getPremiumFare());
         } else if (booking.getTypeOfSeats().toLowerCase(Locale.ROOT).equals("business")) {
             flight.get().getStatus().setRemainingBusinessSeats(flight.get().getStatus().getRemainingBusinessSeats() - booking.getNumberOfSeats());
+            booking.setTravelCost(booking.getNumberOfSeats()*flight.get().getFare().getBusinessFare());
         } else if (booking.getTypeOfSeats().toLowerCase(Locale.ROOT).equals("economy")) {
             flight.get().getStatus().setRemainingEconomySeats(flight.get().getStatus().getRemainingEconomySeats() - booking.getNumberOfSeats());
+            booking.setTravelCost(booking.getNumberOfSeats()*flight.get().getFare().getEconomyFare());
         }
         return bookingRepo.save(booking);
     }

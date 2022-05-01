@@ -20,6 +20,13 @@ public class LocationController {
         this.locationService = locationService;
     }
 
+
+    @GetMapping("/get_all")
+    public ResponseEntity<List<Location>> getAll(){
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/location/get_all").toUriString());
+        return ResponseEntity.created(uri).body(locationService.getAll());
+    }
+
     @GetMapping("/name")
     public ResponseEntity<List<Location>> findLocationByName(@RequestParam("name") String name){
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/location/name").toUriString());
