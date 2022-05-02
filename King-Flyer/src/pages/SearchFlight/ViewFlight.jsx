@@ -29,7 +29,7 @@ const ViewFlight = ({ isLoggedIn }) => {
 
   function book(event) {
     event.preventDefault();
-    isLoggedIn ? navigate(`/view_flight/${id}`) : navigate("/login");
+    isLoggedIn ? navigate(`/book_flight/id=${id}&d=${data.departureLocation}&a=${data.arrivalLocation}`) : navigate("/login");
   }
 
   return (
@@ -40,7 +40,7 @@ const ViewFlight = ({ isLoggedIn }) => {
           <h3>Departure Location : {data.departureLocation}</h3>
           <h3>Departure Location : {data.departureTime}</h3>
           <h3>Arrival Location : {data.arrivalLocation}</h3>
-          <h3>Departure Location : {data.arrivalTime}</h3>
+          <h3>Arrival Location : {data.arrivalTime}</h3>
           <h3>Flight Model : {data.fleet.model}</h3>
           <h3>
             Remaining Business Seats : {data.status.remainingBusinessSeats} -

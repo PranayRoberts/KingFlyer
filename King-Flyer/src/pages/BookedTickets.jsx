@@ -64,7 +64,7 @@ function BookedTickets({ isLoggedIn, credentials }) {
   return (
     <div className="Main">
       <h1 className="title">
-        BookedTickets of {credentials.username !== "" ? credentials.username : ""}
+        BookedTickets{credentials.username !== "" ? credentials.username : ""}
       </h1>
       <Button
         variant="contained"

@@ -187,7 +187,7 @@ function Flight({ isLoggedIn, credentials }) {
                     : setArrivalLocation(newValue);
                 }}
                 renderInput={(params) => (
-                  <TextField {...params} fullWidth label="Arrival Location" />
+                  <TextField {...params} fullWidth label="Departure Location" />
                 )}
               />
             </Grid>
